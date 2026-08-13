@@ -4,8 +4,7 @@
 
 This repository contains codes to reproduce the results and figures published in the paper.
 
-"Human panepigenome represents epigenomic diversity<img width="468" height="21" alt="image" src="https://github.com/user-attachments/assets/513ab66e-1e30-44b4-afc9-07349aa4a431" />
-"
+"Human panepigenome represents epigenomic diversity"
 
 ### :computer: Repository Structure
 The repository is organized as follows:
