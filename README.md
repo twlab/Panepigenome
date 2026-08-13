@@ -47,9 +47,6 @@ If you use this code for your research please cite this paper:
 Dong Z, et al. Human panepigenome represents epigenomic diversity.
 
 
-<p>
-	<img width="50%" align="right" src="https://github-readme-stats.vercel.app/api?username=functionalepigenomics&show_icons=true&hide_border=true" />
-
 ### 📫 Contact me
 - Email: dzheng.th@gmail.com
 
