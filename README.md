@@ -3,22 +3,42 @@
 [![Gmail](https://img.shields.io/badge/-Gmail-c14438?style=flat&logo=Gmail&logoColor=white)](mailto:dzheng.th@gmail.com)
 
 ### 🧐 About
-The repository provides unambiguous probes (i.e., probes uniquely mapping to the target region) for Illumina 450K, EPIC/850K, and EPICv2.0/935K methylation arrays. These probes are evaluated using T2T-CHM13, the pangenome, and a combination of 95 assemblies (including T2T-CHM13 and 94 assemblies from the pangenome). Cross-population and population-specific unambiguous probes identified using the pangenome reference are also available. Importantly, we offer T2T-CHM13-based annotation information (i.e., genomic features, SNPs with minor allele frequency > 0.05, repetitive elements, and epigenetic marks) for each unambiguous probe, which can be leveraged to infer the potential biological functions of DNA methylation alterations in Epigenome-Wide Association Studies.
+The repository provides a collection of custom code for human panepigenomic analyses. These codes include workflows for long-read DNA methylation quality control, projection of individual assembly coordinates to graph coordinates, graph-based interval-overlap analysis, and integrated representation of CpG copy number and methylation at var-CpGs, as well as code to reproduce the results and figures presented in the paper “Human pan-epigenome represents epigenomic diversity.”
+
 
 ### :computer: Repository Structure
 The repository is organized as follows:
 
-- QC: This folder contains codes for long.
+- QC: This folder contains codes for long-read DNA methylation quality control.
 
-- Permuation: This folder contains scripts for the permutation analysis.
+- CpG in Graphic coordinate: This folder contains scripts for projection of individual assembly coordinates to graph coordinates.
 
-- Transcription: This folder contains codes for transcriptional analysis.
+- Intersection: This folder contains codes for graph-based interval-overlap analysis.
 
-- WGBS: This folder contains scripts related to analyzing DNA methyaltion in whole-genome bisulfite sequencing (WGBS) data.
+- Integrated representation: This folder contains scripts related to integrated representation of CpG copy number and methylation at var-CpGs.
 
-- mQTL: This folder stores codes for the identification of methylation quantitative trait loci (mQTLs).
+- Analysis
+	- CpG count: This folder contains codes for assembly-based CpG call and count.
 
-- Figure: This folder contains codes for generating the main figures.
+	- CGI: This folder stores codes for the CpG island (CGI) annotation.
+
+	- CpG call: This folder contains codes for phasing, alignment and methylation profiling.
+
+	- Population: This folder contains codes for population-associated analysis
+
+ 	- Genomic feature enrichment 
+
+	- Loci under directional selection
+
+	- mQTL
+
+  	- eQTM
+  	
+	- Mediation and interaction
+
+	- Clinical and pharmacogenomic annotation
+
+ - Figures: This folder contains codes for generating the main figures.
 
 
 ### ⚡ Technologies
