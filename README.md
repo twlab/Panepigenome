@@ -19,6 +19,8 @@ The repository is organized as follows:
 
 - mQTL: This folder stores codes for the identification of methylation quantitative trait loci (mQTLs).
 
+- Figure: This folder contains codes for generating the main figures.
+
 
 ### 📫 Contact me
 Email: dzheng.th@gmail.com
