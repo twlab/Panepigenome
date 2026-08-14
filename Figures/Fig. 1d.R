@@ -150,7 +150,7 @@ p <- ggplot(plot_df, aes(x = Pop, y = Value, fill = Pop)) +
 # Save
 # ---------------------------------------------
 ggsave(
-  "Fig1g_CGI_haplotype_resolved_Nature.pdf",
+  "Fig1g_CGI_haplotype_resolved.pdf",
   plot = p,
   width = 6,
   height = 4
