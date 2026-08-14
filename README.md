@@ -43,7 +43,7 @@ The repository is organized as follows:
 
 ## Software requirements
 
-Analyses were performed using standard bioinformatics software and custom scripts written primarily in R, Python and Bash.
+Analyses were performed using standard bioinformatics software and custom scripts written primarily in R, Python and Shell.
 
 Major software used in the study includes:
 
