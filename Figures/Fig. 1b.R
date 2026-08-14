@@ -101,7 +101,7 @@ p <- ggplot() +
 p
 
 ggsave(
-  "global_sample_distribution_Nature.pdf",
+  "global_sample_distribution.pdf",
   plot = p,
   width = 7.2,
   height = 4.0,
