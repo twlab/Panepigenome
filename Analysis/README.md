@@ -26,14 +26,17 @@ The analyses characterize CpG diversity, genomic context, population-associated 
 - **Loci under directional selection/**
   - Analysis of var-CpGs and associated loci showing evidence of population differentiation or directional selection.
 
-- **mQTL/**
-  - Identification and characterization of methylation quantitative trait loci (mQTLs) linking genetic variation to DNA methylation.
+- **mQTL in var-CpG/**
+  - Identification and characterization of methylation quantitative trait loci (mQTLs) linking genetic variation to DNA methylation in var-CpG/.
 
 - **eQTM/**
-  - Analysis of associations between DNA methylation and transcript expression.
+  - Analysis of associations between DNA methylation and transcript expression in var-CpG/.
 
 - **Mediation and interaction/**
   - Mediation and genotype–methylation interaction analyses examining relationships among genetic variation, DNA methylation and transcript expression.
+
+- **Molecular QTLs/**
+  - Enrichment of CpG-altering variants among molecular QTLs.
 
 - **Clinical and pharmacogenomic annotation/**
   - Annotation of var-CpGs and associated variants using clinical and pharmacogenomic resources.
