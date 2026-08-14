@@ -7,9 +7,6 @@ This directory contains code for population-associated analyses of CpG abundance
 
 The workflows in this directory characterize population-associated variation in the human pan-epigenome using complementary CpG-level representations:
 
-- methylation at shared CpGs;
-- CpG copy number at var-CpGs;
-- integrated var-CpG signals combining CpG copy number and methylation;
 - population-specific CpG and methylation differences;
 - population structure and variance partitioning;
 - directional-selection enrichment; and
