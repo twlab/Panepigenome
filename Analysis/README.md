@@ -29,7 +29,7 @@ The analyses characterize CpG diversity, genomic context, population-associated 
 - **mQTL in var-CpG/**
   - Identification and characterization of methylation quantitative trait loci (mQTLs) linking genetic variation to DNA methylation in var-CpG/.
 
-- **eQTM/**
+- **eQTM in var-CpG/**
   - Analysis of associations between DNA methylation and transcript expression in var-CpG/.
 
 - **Mediation and interaction/**
