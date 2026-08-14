@@ -48,16 +48,29 @@ Analyses were performed using standard bioinformatics software and custom script
 
 Major software used in the study includes:
 
-* R
-* minimap2
-* pbmm2
-* pb-CpG-tools
-* CCS
-* Primrose
-* Jasmine
-* bedtools
-
-Software versions, command-line parameters and other dependencies are provided in the Methods of the manuscript and/or in the corresponding analysis scripts.
+| Software | Version | URL |
+|---|---|---|
+| bcftools | v1.15.1 | https://github.com/samtools/bcftools |
+| bedops | v2.4.41 | https://github.com/bedops/bedops |
+| BEDTools | v2.29.1 | https://bedtools.readthedocs.io/en/stable/ |
+| CCS | v6.0.0, v6.2.0, v6.3.0, v6.4.0, v6.5.0, v7.0.0, v8.0.0, v8.0.1 | https://ccs.how/ |
+| cpg_lh | — | http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/cpg_lh |
+| DSS | v2.52.0 | https://www.bioconductor.org/packages/release/bioc/html/DSS.html |
+| FastQTL | v2.0 | https://github.com/francois-a/fastqtl |
+| LiftOver | — | https://genome.ucsc.edu/cgi-bin/hgLiftOver |
+| MatrixEQTL | v2.3 | https://github.com/andreyshabalin/matrixeqtl |
+| minimap2 | v2.26 | https://github.com/lh3/minimap2 |
+| pb-CpG-tools | v2.3.2 | https://github.com/PacificBiosciences/pb-cpg-tools |
+| pbmm2 | v1.13.1, v1.14.99 | https://github.com/PacificBiosciences/pbmm2 |
+| PLINK | v1.90b7.4 | https://www.cog-genomics.org/plink/1.9/ |
+| PLINK 2 | v2.00 | https://www.cog-genomics.org/plink/2.0/ |
+| Primrose | v1.1.0, v1.2.0, v1.3.0, v1.4.0 | https://github.com/mattoslmp/primrose |
+| Python 3 | v3.12.2, v3.12.10 | https://www.python.org/downloads/ |
+| R | v4.4.1 | https://www.r-project.org/ |
+| rust-fastQTL | — | https://github.com/huangnengCSU/rust-fastqtl |
+| SAMtools | v1.21 | https://github.com/samtools/samtools |
+| VCFtools | v0.1.16 | https://github.com/vcftools/vcftools |
+| vg | v1.61.0 | https://github.com/vgteam/vg |
 
 Where different software versions were used for data generated at different stages of the HPRC project, the relevant versions are specified in the corresponding scripts or workflow documentation.
 
