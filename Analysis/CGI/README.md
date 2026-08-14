@@ -1,56 +1,39 @@
-# CpG island annotation
+# CpG island annotation and methylation analysis
 
-This directory contains code for identifying and annotating CpG islands (CGIs) in haplotype-resolved genome assemblies and for downstream analyses of CpG gain, loss and methylation within CGI regions.
+This directory contains code for identifying CpG islands (CGIs) from haplotype-resolved genome assemblies and for summarizing CpG methylation within CGI-related genomic regions.
 
 ## Overview
 
-CpG islands are annotated from genome assembly sequences and used to characterize the genomic context of CpGs and var-CpGs.
+CpG islands are identified from unmasked genome assembly sequences and converted to BED format for downstream pan-epigenomic analyses.
 
 The workflows in this directory include:
 
 - identification of CpG islands from haplotype-resolved assemblies;
-- conversion of CGI annotations to BED format;
-- overlap analysis between CGIs and CpG or var-CpG intervals;
-- comparison of CpG gain and loss within CGI regions; and
-- downstream methylation and enrichment analyses involving CGIs.
+- annotation of CGI shores and shelves;
+- overlap-based extraction of CpGs associated with CGI-related regions; and
+- calculation of mean and median CpG methylation stratified by variant class.
 
-## Input
+## CpG island annotation
 
-Typical inputs include:
+CpG islands are identified from unmasked genome assembly sequences using `cpg_lh`.
 
-- haplotype-resolved genome assembly sequences in FASTA format;
-- CpG coordinates in BED format;
-- var-CpG coordinates;
-- genetic variant annotations; and
-- CGI annotation files generated for each assembly.
+Genome assemblies are converted from FASTA to 2bit format and subsequently converted back to unmasked FASTA sequences using `twoBitToFa -noMask` before CGI identification.
 
-## Output
+CGI shores are defined as regions extending up to 2 kb from CGI boundaries, excluding the CGIs themselves. CGI shelves are defined as regions 2–4 kb from CGI boundaries, excluding both CGIs and CGI shores.
 
-Depending on the analysis, outputs may include:
+## Scripts
 
-- CGI coordinates in BED format;
-- CpGs or var-CpGs overlapping CGI regions;
-- counts of CpG gain and loss within CGIs;
-- methylation measurements for CGI-associated CpGs; and
-- summary tables used for downstream statistical analyses and figure generation.
+### CGI annotation script
 
-## Genomic overlap
+Identifies CpG islands from unmasked genome assemblies and generates BED files for:
 
-CGI and CpG intervals are intersected using genomic coordinates to identify CpGs located within CGI regions.
+- CpG islands;
+- CGI shores; and
+- CGI shelves.
 
-Where appropriate, complete overlap criteria are used to ensure that the CpG interval is contained within the annotated CGI.
+Typical output files include:
 
-## Downstream analyses
-
-CGI annotations are used to evaluate:
-
-- the distribution of CpG gain and loss across CGI regions;
-- methylation patterns of CGI-associated var-CpGs;
-- enrichment of var-CpGs within CGIs; and
-- CGI-level effects associated with genetic variation.
-
-## Reproducibility
-
-Scripts in this directory correspond to the CGI-related analyses described in the manuscript.
-
-Software versions, parameters and statistical procedures are provided in the corresponding scripts and in the Methods of the manuscript.
+```text
+*.CGI.bed
+*.CGIshores.bed
+*.CGIshelves.bed
