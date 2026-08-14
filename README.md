@@ -1,8 +1,8 @@
-# Human pan-epigenome
+# Human panepigenome
 
 ## About
 
-This repository provides a collection of code for human pan-epigenomic analyses. The workflows include long-read DNA methylation quality control, projection of individual assembly coordinates to graph coordinates, graph-based interval-overlap analysis, and integrated representation of CpG copy number and methylation at var-CpGs. The repository also includes code used to reproduce the analyses and figures presented in the manuscript **“Human pan-epigenome represents epigenomic diversity.”**
+This repository provides a collection of code for human panepigenomic analyses. The workflows include long-read DNA methylation quality control, projection of individual assembly coordinates to graph coordinates, graph-based interval-overlap analysis, and integrated representation of CpG copy number and methylation at var-CpGs. The repository also includes code used to reproduce the analyses and figures presented in the manuscript **“Human panepigenome represents epigenomic diversity.”**
 
 ## Repository structure
 
@@ -92,7 +92,7 @@ Where applicable, figure scripts are organized by figure or panel to facilitate 
 
 If you use this code or analytical framework, please cite:
 
-**Dong Z. et al. Human pan-epigenome represents epigenomic diversity.**
+**Dong Z. et al. Human panepigenome represents epigenomic diversity.**
 
 Journal and DOI information will be added upon publication.
 
