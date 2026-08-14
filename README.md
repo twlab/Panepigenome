@@ -1,52 +1,193 @@
-## Human panepigenome 😃
-[![Github](https://img.shields.io/badge/-Github-000?style=flat&logo=Github&logoColor=white)](https://github.com/functionalepigenomics)
-[![Gmail](https://img.shields.io/badge/-Gmail-c14438?style=flat&logo=Gmail&logoColor=white)](mailto:dzheng.th@gmail.com)
+# Human pan-epigenome analysis code
 
-### 🧐 About
-The repository provides a collection of custom code for human panepigenomic analyses. These codes include workflows for long-read DNA methylation quality control, projection of individual assembly coordinates to graph coordinates, graph-based interval-overlap analysis, and integrated representation of CpG copy number and methylation at var-CpGs, as well as code to reproduce the results and figures presented in the paper “Human pan-epigenome represents epigenomic diversity.”
+This repository provides code and workflows used for the analyses described in:
 
+**Human pan-epigenome represents epigenomic diversity**
 
-### :computer: Repository Structure
-The repository is organized as follows:
+The repository contains analysis workflows for constructing and characterizing a human pan-epigenomic representation of DNA methylation using haplotype-resolved genome assemblies and long-read methylation data. It also includes code used to reproduce the main analyses and figures presented in the manuscript.
 
-- QC: This folder contains codes for long-read DNA methylation quality control.
+## Overview
 
-- CpG in Graphic coordinate: This folder contains scripts for projection of individual assembly coordinates to graph coordinates.
+The major workflows included in this repository are:
 
-- Intersection: This folder contains codes for graph-based interval-overlap analysis.
+1. **Long-read DNA methylation quality control**
 
-- Integrated representation: This folder contains scripts related to integrated representation of CpG copy number and methylation at var-CpGs.
+   * Quality control of PacBio HiFi sequencing and methylation data
+   * Assessment of read quality, mapping quality, methylation distributions, batch effects and genomic coverage
 
-- Analysis
-	- CpG count: This folder contains codes for assembly-based CpG call and count.
+2. **CpG and methylation annotation**
 
-	- CGI: This folder stores codes for the CpG island (CGI) annotation.
+   * Identification of CpG sites in haplotype-resolved assemblies
+   * Identification of reference and non-reference CpGs
+   * Extraction and processing of CpG methylation levels
 
-	- CpG call: This folder contains codes for phasing, alignment and methylation profiling.
+3. **Coordinate projection**
 
-	- Population: This folder contains codes for population-associated analysis
+   * Projection of individual haplotype-assembly coordinates to pangenome graph coordinates
+   * Representation of CpGs and genetic variants in graph space
 
- 	- Genomic feature enrichment 
+4. **Graph-based interval-overlap analysis**
 
-	- Loci under directional selection
+   * Intersection of CpG and variant intervals directly in graph coordinates
+   * Identification of CpG gain and loss associated with SNVs, indels and structural variants
 
-	- mQTL
+5. **Integrated representation of var-CpGs**
 
-  	- eQTM
-  	
-	- Mediation and interaction
+   * Integration of CpG copy number and DNA methylation at variant-associated CpGs (var-CpGs)
+   * Generation of integrated pan-epigenomic representations for downstream analyses
 
-	- Clinical and pharmacogenomic annotation
+6. **Population and functional analyses**
 
- - Figures: This folder contains codes for generating the main figures.
+   * Population-associated CpG and methylation analyses
+   * Genomic feature enrichment
+   * Genetic, methylation and transcriptomic integration
+   * Statistical analyses used in the manuscript
 
+7. **Figure reproduction**
 
-### ⚡ Technologies
-If you use this code for your research please cite this paper:
+   * Scripts used to generate the main, Extended Data and Supplementary figures reported in the manuscript
 
-Dong Z, et al. Human panepigenome represents epigenomic diversity.
+## Repository structure
 
+```text
+.
+├── methylation_QC/
+│   └── Long-read DNA methylation quality-control workflows
+│
+├── CpG_annotation/
+│   └── CpG identification and methylation processing
+│
+├── coordinate_projection/
+│   └── Projection from haplotype assemblies to graph coordinates
+│
+├── graph_overlap/
+│   └── Graph-based CpG–variant interval-overlap analysis
+│
+├── varCpG_integration/
+│   └── Integration of CpG copy number and methylation
+│
+├── population_analysis/
+│   └── Population-level and differential methylation analyses
+│
+├── functional_analysis/
+│   └── Genomic annotation and enrichment analyses
+│
+├── transcript_analysis/
+│   └── Genetic–methylation–transcript integration
+│
+├── figures/
+│   └── Code used to reproduce manuscript figures
+│
+└── README.md
+```
 
-### 📫 Contact me
-- Email: dzheng.th@gmail.com
+Directory names should be adjusted to match the final organization of this repository.
 
+## Software requirements
+
+Analyses were performed using standard bioinformatics software and custom scripts written primarily in **R, Python, Bash and/or C/C++**, as appropriate.
+
+Major software used in the study includes:
+
+* R v4.4.1
+* minimap2
+* pbmm2
+* pb-CpG-tools
+* CCS
+* Primrose
+* Jasmine v2.4.0
+* bedtools
+* additional software and R packages specified in the Methods and individual workflow directories
+
+Exact software versions, command-line parameters and dependencies are provided in the corresponding scripts and in the Methods of the manuscript.
+
+Where multiple software versions were used for data generated at different stages of the HPRC project, the relevant versions are specified in the associated workflow documentation.
+
+## Data availability
+
+The analyses use human genomic, epigenomic and transcriptomic datasets described in the manuscript.
+
+Primary datasets include:
+
+* haplotype-resolved genome assemblies and PacBio HiFi methylation data generated by the **Human Pangenome Reference Consortium (HPRC)**
+* RNA-seq data from the **MAGE** resource
+* publicly available genomic annotations and functional genomics datasets used for downstream analyses
+
+Accessions, URLs and additional information for all datasets are provided in the **Data availability** statement of the manuscript.
+
+Large sequencing and reference datasets are not duplicated in this repository.
+
+## Reproducing the analyses
+
+Each major analysis directory contains the scripts required for the corresponding analysis.
+
+A typical workflow is:
+
+```bash
+# 1. Prepare input data
+bash prepare_input.sh
+
+# 2. Run the analysis
+bash run_analysis.sh
+
+# 3. Perform downstream statistical analysis
+Rscript analysis.R
+
+# 4. Generate the corresponding figure
+Rscript plot.R
+```
+
+The exact commands and required input files differ between analyses and are documented within the relevant directories.
+
+Analyses that require high-performance computing were run using cluster job schedulers. Example submission scripts are included where appropriate.
+
+## Reproducing manuscript figures
+
+Scripts for reproducing the figures are provided in the `figures/` directory.
+
+Where possible, each figure directory contains:
+
+```text
+Figure_X/
+├── README.md
+├── input/
+├── analysis.R
+└── plot.R
+```
+
+Processed input data required to reproduce individual panels are provided when permitted by data-sharing requirements. For large or controlled-access datasets, instructions for obtaining the original data are provided instead.
+
+## Custom methods
+
+Several workflows were developed specifically for this study, including:
+
+* long-read DNA methylation quality control
+* projection of CpG and variant coordinates from individual haplotype assemblies into pangenome graph coordinates
+* graph-based interval-overlap analysis
+* representation of CpG gain and loss caused by genetic variants
+* integrated representation of CpG copy number and methylation at var-CpGs
+
+Further methodological details are provided in the manuscript Methods.
+
+## Reproducibility
+
+All custom code and workflows required for the analyses reported in the manuscript are provided in this repository.
+
+Software versions, major parameters and statistical procedures are described in the manuscript Methods and/or accompanying scripts. Public datasets required to reproduce the analyses can be obtained using the accession numbers and links provided in the Data availability statement.
+
+## Citation
+
+If you use this code or the associated analytical framework, please cite:
+
+> Dong Z. *et al.* **Human pan-epigenome represents epigenomic diversity.**
+> [Journal information / DOI to be added upon publication]
+
+## License
+
+This repository is released under the MIT License. See the LICENSE file for details.
+
+## Contact
+
+For questions regarding the code or analyses, please contact the corresponding authors listed in the manuscript.
+
+Issues related specifically to code can also be submitted through the GitHub **Issues** page.
