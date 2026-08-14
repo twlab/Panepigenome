@@ -1,4 +1,4 @@
-<img width="468" height="19" alt="image" src="https://github.com/user-attachments/assets/3d2f7706-9c07-4708-a6dc-c94dd1fd3a46" /># Human panepigenome
+Human panepigenome
 
 ## About
 
