@@ -282,5 +282,3 @@ Scripts in this directory correspond to the population-associated analyses descr
 
 Analysis-specific parameters, input requirements and statistical procedures are documented in the corresponding scripts and in the Methods of the manuscript.
 
-```
-```
