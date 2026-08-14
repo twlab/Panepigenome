@@ -102,7 +102,7 @@ p <- ggplot(
 # p
 
 ggsave(
-  "CpG_saturation_HPRC2_Nature.pdf",
+  "CpG_saturation_HPRC2.pdf",
   plot = p,
   width = 6,
   height = 3.6
