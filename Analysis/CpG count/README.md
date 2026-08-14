@@ -11,3 +11,10 @@ Identifies CpG dinucleotides from genome assembly sequences and converts their p
 - BED file containing the genomic coordinates of identified CpG sites.
 
 CpG sites are identified by locating all occurrences of the dinucleotide `CG`, treating uppercase and lowercase sequences equivalently.
+
+### Count CpG sites
+
+The total number of identified CpG sites can be obtained by counting the number of lines in the output BED file:
+
+```bash
+wc -l example_output.bed
