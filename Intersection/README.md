@@ -10,7 +10,7 @@ This approach enables interval intersections to be evaluated directly in graph s
 
 ## Contact
 
-For questions about the lcpg2graph.py script, please contact:
+For questions about the cpg_overlap_with_variant.py script, please contact:
 
 **Wenjin Zhang**
 Email: [wenjin@wustl.edu](mailto:wenjin@wustl.edu)
