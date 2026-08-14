@@ -8,7 +8,7 @@ library(MatrixEQTL)
 
 ## Location of the package with the data files.
 #base.dir = find.package('MatrixEQTL');
-base.dir = '/scratch/zdong/Projects/PanEpiG/V1-9/Geno-meth-exp/IndMeth/G-M_mQTLs';
+base.dir = '/scratch/zdong/Projects/PanEpiG/V1-9/Geno-meth-exp/IndMeth/G-M_var-cpg/Matrixeqtls';
 
 ## Settings
 
@@ -17,11 +17,11 @@ useModel = modelLINEAR; # modelANOVA, modelLINEAR, or modelLINEAR_CROSS
 
 # Genotype file name
 SNP_file_name = paste(base.dir, "/var_aligned.bed", sep="");
-snps_location_file_name = paste(base.dir, "/refvar.coordinate.bed", sep="");
+snps_location_file_name = paste(base.dir, "/var.coordinate.bed", sep="");
 
 # Gene expression file name
 expression_file_name = paste(base.dir, "/meth_aligned.bed", sep="");
-gene_location_file_name = paste(base.dir, "/meth.coordinate.bed", sep="");
+gene_location_file_name = paste(base.dir, "/cpg.coordinate.bed", sep="");
 
 # Covariates file name
 # Set to character() for no covariates
@@ -32,7 +32,7 @@ output_file_name_cis = "result_cis.txt";
 output_file_name_tra = NULL;
 
 # Only associations significant at this level will be saved
-pvOutputThreshold_cis = 1e-3;
+pvOutputThreshold_cis = 1;
 pvOutputThreshold_tra = 0;
 
 # Error covariance matrix
@@ -112,6 +112,7 @@ me = Matrix_eQTL_main(
 # show(me$trans$eqtls)
 
 ## Plot the Q-Q plot of local and distant p-values
+
 me$cis$ntests
 plot(me)
 
