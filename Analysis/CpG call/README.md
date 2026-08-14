@@ -139,4 +139,3 @@ Scripts in this directory correspond to the phasing, haplotype-aware alignment a
 
 The workflow retains the relationship between each HiFi read, its assigned haplotype and the corresponding assembly-specific CpG methylation measurements for downstream pan-epigenomic analyses.
 
-```
