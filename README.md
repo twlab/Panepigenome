@@ -26,17 +26,17 @@ The repository is organized as follows:
 
 * **Analysis/**
 
-* **CpG count/** — Assembly-based CpG identification and counting.
-* **CGI/** — CpG island annotation and methylation analysis.
-* **CpG call/** — Haplotype-aware alignment and methylation profiling.
-* **Population/** — Population-associated analyses.
-* **Genomic feature enrichment/** — Genomic feature enrichment analyses.
-* **Loci under directional selection/** — Enrichment analysis at loci under directional selection.
-* **mQTL in var-CpG/** — Association between var-CpG methylation and genetic features.
-* **eQTM in var-CpG/** — Association between promoter var-CpG methylation and transcript expression.
-* **Mediation and interaction/** — Mediation and variant-by-methylation interaction analyses.
-* **Molecular QTLs/** — Enrichment of CpG-altering variants among molecular QTLs.
-* **Clinical and pharmacogenomic annotation/** — Clinical and pharmacogenomic annotation of CpG-altering variants.
+  * **CpG count/** — Assembly-based CpG identification and counting.
+  * **CGI/** — CpG island annotation and methylation analysis.
+  * **CpG call/** — Haplotype-aware alignment and methylation profiling.
+  * **Population/** — Population-associated analyses.
+  * **Genomic feature enrichment/** — Genomic feature enrichment analyses.
+  * **Loci under directional selection/** — Enrichment analysis at loci under directional selection.
+  * **mQTL in var-CpG/** — Association between var-CpG methylation and genetic features.
+  * **eQTM in var-CpG/** — Association between promoter var-CpG methylation and transcript expression.
+  * **Mediation and interaction/** — Mediation and variant-by-methylation interaction analyses.
+  * **Molecular QTLs/** — Enrichment of CpG-altering variants among molecular QTLs.
+  * **Clinical and pharmacogenomic annotation/** — Clinical and pharmacogenomic annotation of CpG-altering variants.
 
 * **Figures/**
 
