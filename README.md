@@ -1,4 +1,4 @@
-### Human panepigenome
+# Human panepigenome
 
 ## About
 
