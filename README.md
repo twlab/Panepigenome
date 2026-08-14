@@ -1,4 +1,4 @@
-# Human panepigenome
+<img width="468" height="19" alt="image" src="https://github.com/user-attachments/assets/3d2f7706-9c07-4708-a6dc-c94dd1fd3a46" /># Human panepigenome
 
 ## About
 
@@ -26,16 +26,17 @@ The repository is organized as follows:
 
 * **Analysis/**
 
-  * **CpG count/** — Assembly-based CpG identification and counting.
-  * **CGI/** — CpG island annotation.
-  * **CpG call/** — Phasing, alignment and methylation profiling.
-  * **Population/** — Population-associated analyses.
-  * **Genomic feature enrichment/** — Genomic feature enrichment analyses.
-  * **Loci under directional selection/** — Analysis of loci under directional selection.
-  * **mQTL/** — Methylation quantitative trait locus analyses.
-  * **eQTM/** — Expression quantitative trait methylation analyses.
-  * **Mediation and interaction/** — Mediation and interaction analyses.
-  * **Clinical and pharmacogenomic annotation/** — Clinical and pharmacogenomic annotation.
+* **CpG count/** — Assembly-based CpG identification and counting.
+* **CGI/** — CpG island annotation and methylation analysis.
+* **CpG call/** — Haplotype-aware alignment and methylation profiling.
+* **Population/** — Population-associated analyses.
+* **Genomic feature enrichment/** — Genomic feature enrichment analyses.
+* **Loci under directional selection/** — Enrichment analysis at loci under directional selection.
+* **mQTL in var-CpG/** — Association between var-CpG methylation and genetic features.
+* **eQTM in var-CpG/** — Association between promoter var-CpG methylation and transcript expression.
+* **Mediation and interaction/** — Mediation and variant-by-methylation interaction analyses.
+* **Molecular QTLs/** — Enrichment of CpG-altering variants among molecular QTLs.
+* **Clinical and pharmacogenomic annotation/** — Clinical and pharmacogenomic annotation of CpG-altering variants.
 
 * **Figures/**
 
