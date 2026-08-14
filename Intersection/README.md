@@ -7,3 +7,10 @@ CpG and variant intervals are represented as oriented graph paths with terminal 
 Reported results include the CpG identifier, variant identifier, overlap length and source interval annotations.
 
 This approach enables interval intersections to be evaluated directly in graph space without conversion to a single linear reference coordinate system.
+
+## Contact
+
+For questions about the lcpg2graph.py script, please contact:
+
+**Wenjin Zhang**
+Email: [wenjin@wustl.edu](mailto:wenjin@wustl.edu)
