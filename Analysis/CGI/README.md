@@ -262,4 +262,3 @@ Scripts in this directory correspond to CGI-related analyses described in the ma
 Software versions, parameters and additional methodological details are provided in the corresponding scripts and in the Methods of the manuscript.
 
 ```
-```
