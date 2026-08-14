@@ -26,3 +26,10 @@ Projected interval lengths and sequences were compared with the corresponding in
 - Start and end offsets within graph segments
 - Projected interval lengths
 - Reconstructed interval sequences for validation
+
+## Contact
+
+For questions about the lcpg2graph.py script, please contact:
+
+**Wenjin Zhang**
+Email: [wenjin@wustl.edu](mailto:wenjin@wustl.edu)
