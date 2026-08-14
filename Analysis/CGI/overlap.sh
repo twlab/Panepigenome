@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-fea=CpG_shelf
+fea=CGI
 type_tag=hap2
 AWK=awk
 
