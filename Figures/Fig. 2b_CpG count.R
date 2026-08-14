@@ -7,7 +7,7 @@ theme_set(theme_classic(base_size = 14))
 # Read data
 # ---------------------------
 data <- read.table(
-  "input_methylation.log",
+  "input.log",
   header = TRUE,
   sep = "\t",
   stringsAsFactors = FALSE
@@ -18,7 +18,7 @@ data <- read.table(
 # ---------------------------
 data <- data %>%
   mutate(
-    count = count / 100,
+    count_million = count / 1e6,
     pop = factor(pop, levels = c("AFR", "AMR", "EAS", "EUR", "SAS")),
     type = factor(
       type,
@@ -38,36 +38,35 @@ data <- data %>%
         "SV insertion",
         "SV deletion"
       )
+    ),
+    variant_class = case_when(
+      grepl("^SNV", as.character(type)) ~ "SNV",
+      grepl("^Indel", as.character(type)) ~ "Indel",
+      grepl("^SV", as.character(type)) ~ "SV",
+      TRUE ~ NA_character_
     )
   )
 
-wilcox.test(data$count[data$type=='SNV gain'], data$count[data$type=='SNV loss'],paired = T)
-shapiro.test(data$count[data$type=='SNV gain'])
-median(data$count[data$type=='SNV gain'])
-# 0.775
-median(data$count[data$type=='SNV loss'])
-# 0.775
-
-
 # ---------------------------
-# Median ± SD by type and population
+# Median ± SD by type and continental group
 # ---------------------------
 summary_df <- data %>%
   group_by(type, pop) %>%
   summarise(
-    median_methylation = median(count, na.rm = TRUE),
-    sd_methylation     = sd(count, na.rm = TRUE),
-    n                  = sum(!is.na(count)),
+    median_count = median(count_million, na.rm = TRUE),
+    sd_count     = sd(count_million, na.rm = TRUE),
+    mean_count   = mean(count_million, na.rm = TRUE),
+    n            = sum(!is.na(count_million)),
     .groups = "drop"
   ) %>%
   mutate(
-    ymin = pmax(median_methylation - sd_methylation, 0),
-    ymax = pmin(median_methylation + sd_methylation, 1)
+    ymin = pmax(median_count - sd_count, 0),
+    ymax = median_count + sd_count
   )
 
 write.table(
   summary_df,
-  file = "median_SD_methylation_by_type_pop.tsv",
+  file = "median_SD_CpG_count_by_type_pop.tsv",
   sep = "\t",
   row.names = FALSE,
   quote = FALSE
@@ -76,7 +75,7 @@ write.table(
 # ---------------------------
 # Colors
 # ---------------------------
-pop_colors <- c(
+population_colors <- c(
   AFR = "#0072B2",
   AMR = "#D55E00",
   EAS = "#009E73",
@@ -91,13 +90,13 @@ pd <- position_dodge(width = 0.65)
 
 p <- ggplot(
   summary_df,
-  aes(x = type, y = median_methylation, color = pop)
+  aes(x = type, y = median_count, color = pop)
 ) +
   geom_errorbar(
     aes(ymin = ymin, ymax = ymax),
     position = pd,
-    width = 0.20,
-    linewidth = 0.35,
+    width = 0.18,
+    linewidth = 0.5,
     alpha = 0.6
   ) +
   geom_point(
@@ -105,21 +104,14 @@ p <- ggplot(
     size = 2.5,
     alpha = 0.6
   ) +
-  geom_hline(
-    yintercept = 0.803,
-    linetype = "dashed",
-    color = "grey40",
-    linewidth = 0.8
-  ) +
-  scale_color_manual(values = pop_colors) +
+  scale_color_manual(values = population_colors) +
   scale_y_continuous(
-    labels = percent_format(accuracy = 1),
-    limits = c(0.5, 1),
-    expand = expansion(mult = c(0.02, 0.04))
+    labels = label_number(accuracy = 0.1),
+    expand = expansion(mult = c(0.03, 0.08))
   ) +
   labs(
     x = NULL,
-    y = "Methylation level",
+    y = "CpG count (millions)",
     color = NULL
   ) +
   theme(
@@ -130,7 +122,7 @@ p <- ggplot(
       size = 11,
       color = "black"
     ),
-    axis.text = element_text(size = 11, color = "black"),
+    axis.text.y = element_text(size = 11, color = "black"),
     axis.title.y = element_text(size = 12, color = "black"),
     axis.line = element_line(linewidth = 1, color = "black"),
     axis.ticks = element_line(linewidth = 1, color = "black"),
@@ -141,11 +133,9 @@ p <- ggplot(
   )
 
 
-# Save PDF
 ggsave(
-  filename = "CpG_variant_methylation_median_SD_by_pop.pdf",
+  "CpG_geneticvariants_count_median_SD_by_pop.pdf",
   plot = p,
   width = 5.6,
-  height = 3.5,
-  device = "pdf"
+  height = 3.5
 )
