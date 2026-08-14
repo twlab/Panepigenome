@@ -1,0 +1,17 @@
+>|> 20250618 01:36:31.368 -|- INFO -|- AlignSettings -|- 0x7fe44fb8ec00|| -|- Using 18 threads for alignments.
+>|> 20250618 01:36:31.395 -|- INFO -|- CheckPositionalArgs -|- 0x7fe44fb8ec00|| -|- READ input file: /storage1/fs1/ccdg2/Active/analysis/HPRC_Release_2_Data/PacBio_HiFi_All/HG02735/m54329U_211109_002533-bc1002.5mc.hifi_reads.bam
+>|> 20250618 01:36:31.395 -|- INFO -|- CheckPositionalArgs -|- 0x7fe44fb8ec00|| -|- REF  input file: /storage2/fs1/hprc/Active/zdong/Benchmark/RefGenome/T2T/GCF_009914755.1_T2T-CHM13v2.0_genomic.mmi
+>|> 20250618 01:36:31.454 -|- INFO -|- CheckPositionalArgs -|- 0x7fe44fb8ec00|| -|- Reference input is an index file. Index parameter override options are disabled!
+>|> 20250618 01:36:31.455 -|- INFO -|- Index -|- 0x7fe44fb8ec00|| -|- Start reading/building index
+>|> 20250618 01:36:46.291 -|- INFO -|- Index -|- 0x7fe44fb8ec00|| -|- Finished reading/building index
+>|> 20250618 01:57:54.435 -|- INFO -|- Runner -|- 0x7fe44fb8ec00|| -|- Mapped Reads: 610818
+>|> 20250618 01:57:54.436 -|- INFO -|- Runner -|- 0x7fe44fb8ec00|| -|- Alignments: 619486
+>|> 20250618 01:57:54.436 -|- INFO -|- Runner -|- 0x7fe44fb8ec00|| -|- Mapped Bases: 11789447664
+>|> 20250618 01:57:54.436 -|- INFO -|- Runner -|- 0x7fe44fb8ec00|| -|- Mean Gap-Compressed Sequence Identity: 99.5079%
+>|> 20250618 01:57:54.436 -|- INFO -|- Runner -|- 0x7fe44fb8ec00|| -|- Max Mapped Read Length: 45821
+>|> 20250618 01:57:54.436 -|- INFO -|- Runner -|- 0x7fe44fb8ec00|| -|- Mean Mapped Read Length: 19031
+>|> 20250618 01:57:54.436 -|- INFO -|- Runner -|- 0x7fe44fb8ec00|| -|- Index Build/Read Time: 22s 366ms 
+>|> 20250618 01:57:54.436 -|- INFO -|- Runner -|- 0x7fe44fb8ec00|| -|- Alignment Time: 21m 83us 
+>|> 20250618 01:57:54.436 -|- INFO -|- Runner -|- 0x7fe44fb8ec00|| -|- Run Time: 21m 23s 
+>|> 20250618 01:57:54.436 -|- INFO -|- Runner -|- 0x7fe44fb8ec00|| -|- CPU Time: 6h 38m 
+>|> 20250618 01:57:54.436 -|- INFO -|- Runner -|- 0x7fe44fb8ec00|| -|- Peak RSS: 20.035 GB
