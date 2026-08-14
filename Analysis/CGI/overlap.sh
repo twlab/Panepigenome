@@ -21,10 +21,8 @@ while read -r sample_id; do
 
     echo "Processing: $sample_id $type_tag"
 
-    # 清空输出文件
     : > "$out_overlap"
 
-    # 按坐标匹配
     $AWK -F'\t' -v OFS="\t" -v out1="$out_overlap" '
     NR==FNR {
         # File B (matched): chr start end in columns 1,2,3; extra cols 10-15
