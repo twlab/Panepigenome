@@ -99,16 +99,3 @@ Scripts in this directory correspond to the genomic feature enrichment analyses 
 
 Analysis-specific inputs, statistical procedures and annotation sources are documented in the corresponding scripts and in the Methods of the manuscript.
 
-````
-
-For your GitHub structure, I would name the folder either:
-
-```text
-Genomic_feature_enrichment/
-````
-
-or, if you already use spaces:
-
-```text
-Genomic feature enrichment/
-```
