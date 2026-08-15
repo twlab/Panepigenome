@@ -45,7 +45,7 @@ feature_order <- summary_df %>%
 
 summary_df$Feature <- factor(summary_df$Feature, levels = feature_order)
 
-# ---- Nature-style plot ----
+# ---- plot ----
 continent_cols <- c(
   AFR = "#0072B2",
   AMR = "#D55E00",
