@@ -33,7 +33,7 @@ data <- data %>%
   filter(set > 0)
 
 # ---------------------------
-# Nature-style colors
+# colors
 # ---------------------------
 region_colors <- c(
   "Africa"     = "#1F78B4",
