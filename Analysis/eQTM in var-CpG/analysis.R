@@ -14,10 +14,9 @@ meta <- fread("/scratch/zdong/Projects/PanEpiG/V1-9/Figures/Clinical/PIEZO1/meta
 # ==========================================
 # 2. Transpose Meta and Synchronize Samples
 # ==========================================
-# Your meta has samples as columns. We need samples as rows for lm().
-sample_ids <- colnames(meta)[-1]  # Get HGXXXX names
+sample_ids <- colnames(meta)[-1] 
 meta_df <- as.data.frame(t(meta[, -1, with=FALSE]))
-colnames(meta_df) <- meta$ID      # Set rows like 'sex', 'population' as columns
+colnames(meta_df) <- meta$ID    
 meta_df$sample_id <- sample_ids
 
 # Identify common samples across all 4 datasets
@@ -26,7 +25,6 @@ common_samples <- setdiff(common_samples, c("start", "end", "ID"))
 
 if(length(common_samples) == 0) stop("Zero common samples found! Check sample ID naming.")
 
-# Re-align meta_df to common_samples and remove the helper ID column
 rownames(meta_df) <- meta_df$sample_id
 meta_df <- meta_df[common_samples, ]
 meta_df$sample_id <- NULL 
@@ -36,7 +34,7 @@ meth_mat <- as.matrix(meth[, ..common_samples])
 var_mat  <- as.matrix(var[, ..common_samples])
 gene_mat <- as.matrix(gene[, ..common_samples])
 
-# Pre-calculate M-values globally (Beta -> M-value)
+# Beta -> M-value
 beta <- meth_mat / 100
 eps  <- 1e-6
 meth_mat <- log2((beta + eps) / (1 - beta + eps))
