@@ -84,7 +84,7 @@ population_colors <- c(
 )
 
 # ---------------------------
-# Nature-style median ± SD dot plot
+# median ± SD dot plot
 # ---------------------------
 pd <- position_dodge(width = 0.65)
 
@@ -131,7 +131,6 @@ p <- ggplot(
     legend.key.size = unit(0.4, "cm"),
     panel.grid = element_blank()
   )
-
 
 ggsave(
   "CpG_geneticvariants_count_median_SD_by_pop.pdf",
