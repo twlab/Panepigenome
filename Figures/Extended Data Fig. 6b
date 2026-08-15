@@ -60,7 +60,7 @@ write.table(
 )
 
 # ---------------------------
-# Nature-style colors
+# colors
 # ---------------------------
 feature_colors <- c(
   Gene     = "#4D4D4D",
