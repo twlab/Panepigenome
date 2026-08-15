@@ -66,8 +66,6 @@ p_pie <- ggplot(
     plot.margin = margin(5, 5, 5, 5)
   )
 
-
-
 ggsave(
   "shared_varCpG_largest_effect_pie.pdf",
   p_pie,
