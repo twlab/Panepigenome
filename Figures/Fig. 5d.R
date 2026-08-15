@@ -59,7 +59,7 @@ after_start <- before_only
 after_midpoint <- after_start + after_total / 2
 
 # ============================================================
-# 3. Nature-style overlap-composition plot
+# 3. overlap-composition plot
 # ============================================================
 
 library(tidyverse)
@@ -116,7 +116,7 @@ after_xmin <- before_only
 after_xmax <- union_total
 
 # ---------------------------
-# Nature-style overlap plot
+# overlap plot
 # ---------------------------
 p <- ggplot() +
   
