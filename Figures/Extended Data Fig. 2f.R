@@ -172,14 +172,14 @@ median(data$Median[data$LabGroup=="WUSTL"],na.rm=T)
 median(data$Median[data$LabGroup!=c("NISC","PacBio")],na.rm=T)
 
 wilcox.test(data$Median[data$LabGroup!=c("NISC","PacBio")],data$Median[data$LabGroup=="NISC"])
-# p-value = 0.02
+
 wilcox.test(data$Median[data$LabGroup!=c("PacBio")],data$Median[data$LabGroup=="PacBio"])
-# p-value = 0.008
+
 
 median(data$Median[data$LabGroup!=c("PacBio")])
-# 80.3 # 443
+
 median(data$Median[data$LabGroup==c("PacBio")])
-# 72 # 3
+
 
 df_test <- data %>%
   mutate(
