@@ -2,7 +2,6 @@
 
 id="HG00000"
 sampleid="m00000"
-#code="${sampleid}.sort.sh"
 dir="/storage1/fs1/ccdg2/Active/analysis/zdong/HPRCv2/QC/step2-aligment_QC/Align_asm/${id}"
 mapq=10
 
