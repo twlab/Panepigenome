@@ -3,6 +3,7 @@
 # ===============================
 library(dplyr)
 library(tidyr)
+library(ggplot2)
 
 # ===============================
 # Step 1: Read methylation data
@@ -14,10 +15,6 @@ df <- read.table(
   stringsAsFactors = FALSE,
   comment.char = ""
 )
-
-# Missing rate cutoff (10%)
-# df <- df[rowMeans(is.na(df[, 5:ncol(df)])) <= 0.10, ]
-
 
 # CpG / gene ID
 gene_id <- df$sample
@@ -35,15 +32,6 @@ con <- read.table(
 )[, 1:2]
 colnames(con) <- c("sample", "group")
 rownames(con)<-con$sample
-
-# # Population groups
-# pop <- read.table(
-#   "/scratch/zdong/Projects/PanEpiG/V1-9/Model_Ind/Refmeth/pop.log",
-#   stringsAsFactors = FALSE
-# )
-# pop <- pop[!pop$V2 %in% c("CH", "EUR"), 1:2]
-# colnames(pop) <- c("sample", "group")
-
 
 # Match samples
 common <- intersect(colnames(expr_mat), rownames(con))
@@ -72,9 +60,6 @@ t.test(a$y[a$sample %in% con$sample[con$group=="AFR"]],a$y[a$sample %in% con$sam
 
 t.test(a$y[a$sample %in% con$sample[con$group=="AFR"]],a$y[a$sample %in% con$sample[con$group!="AFR"]])   
 
-library(ggplot2)
-library(dplyr)
-
 ## Prepare data
 plot_df <- a %>%
   mutate(group2 = ifelse(sample %in% con$sample[con$group == "AFR"],
@@ -91,9 +76,6 @@ p_label <- paste0(
   "P = ", signif(pval, 3),
   "\n95% CI: ", round(ci_low, 3), " to ", round(ci_high, 3)
 )
-
-library(ggplot2)
-library(dplyr)
 
 # Make sure group order is fixed
 plot_df <- plot_df %>%
