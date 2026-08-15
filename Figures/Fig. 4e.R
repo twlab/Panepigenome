@@ -462,15 +462,10 @@ annotation_data[, x := common_max * 0.96]
 annotation_data[, y := common_max * 0.04]
 
 # ============================================================
-# 9. Nature-style multi-panel plot
+# 9. multi-panel plot
 # ============================================================
 
 p <- ggplot() +
-  
-  # ----------------------------------------------------------
-# Hexbin density: non-outliers only
-# ----------------------------------------------------------
-
 geom_hex(
   data = background_data,
   aes(
@@ -499,11 +494,6 @@ geom_hex(
     ),
     oob = squish
   ) +
-  
-  # ----------------------------------------------------------
-# FST = PST reference
-# ----------------------------------------------------------
-
 geom_abline(
   slope = 1,
   intercept = 0,
@@ -511,11 +501,6 @@ geom_abline(
   linewidth = 0.40,
   colour = "grey45"
 ) +
-  
-  # ----------------------------------------------------------
-# Linear regression fit
-# ----------------------------------------------------------
-
 geom_line(
   data = regression_data,
   aes(
@@ -527,11 +512,6 @@ geom_line(
   linewidth = 0.65,
   lineend = "round"
 ) +
-  
-  # ----------------------------------------------------------
-# Outliers
-# ----------------------------------------------------------
-
 geom_point(
   data = outlier_data,
   aes(
@@ -544,7 +524,6 @@ geom_point(
   stroke = 0,
   show.legend = TRUE
 ) +
-  
   scale_colour_manual(
     values = outlier_colours,
     breaks = c(
@@ -554,11 +533,6 @@ geom_point(
     name = NULL,
     drop = FALSE
   ) +
-  
-  # ----------------------------------------------------------
-# Per-panel statistics
-# ----------------------------------------------------------
-
 geom_text(
   data = annotation_data,
   aes(
@@ -573,21 +547,11 @@ geom_text(
   lineheight = 1.05,
   colour = "black"
 ) +
-  
-  # ----------------------------------------------------------
-# Facets
-# ----------------------------------------------------------
-
 facet_wrap(
   ~Group,
   ncol = 3,
   labeller = as_labeller(group_labels)
 ) +
-  
-  # ----------------------------------------------------------
-# Shared coordinate scales
-# ----------------------------------------------------------
-
 scale_x_continuous(
   limits = c(0, common_max),
   breaks = pretty_breaks(n = 4),
@@ -595,7 +559,6 @@ scale_x_continuous(
     mult = c(0, 0)
   )
 ) +
-  
   scale_y_continuous(
     limits = c(0, common_max),
     breaks = pretty_breaks(n = 4),
@@ -639,9 +602,6 @@ scale_x_continuous(
   theme_classic(base_size = 12) +
   
   theme(
-    # --------------------------------------------------------
-    # Axes
-    # --------------------------------------------------------
     
     axis.title = element_text(
       size = 13,
