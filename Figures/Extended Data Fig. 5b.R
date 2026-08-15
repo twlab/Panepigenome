@@ -2,17 +2,14 @@
 library(ggplot2)
 library(dplyr)
 
-# Read data correctly
-
-
-
+# Read data
 data <- read.table("input.log", header = TRUE, sep = "\t", stringsAsFactors = FALSE)
 # data$count<-data$count/1000000
 
 # Ensure correct column names
 # colnames(data) <- c("id", "pop", "count", "type", "hap","category")
 
-# Define custom colors for populations (Nature-style palette)
+# Define custom colors for populations
 population_colors <- c("EAS" = "#2ca02c",
                        "SAS" = "#ff7f0e",
                        "AFR" = "#1f77b4",
@@ -25,10 +22,9 @@ data$type <- factor(data$type, levels = c("SNP", "Indel-insertion", "Indel-delet
 data<-data[data$type == "SV-insertion"  | data$type == "SV-deletion",]
 
 mean(data$count)
-# [1] 0.02250672
 
 # Save the plot as a high-resolution PDF
-pdf("Length_SV_CpG_normalized.pdf", width = 4, height = 3.5)  # Adjust size as needed
+pdf("Length_SV_CpG_normalized.pdf", width = 4, height = 3.5)
 
 ggplot(data, aes(x = type, y = count)) +
   geom_jitter(
