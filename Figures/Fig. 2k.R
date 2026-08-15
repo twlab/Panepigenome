@@ -8,7 +8,6 @@ library(scatterpie)
 
 # --------------------------------------------------
 # Input data
-# Replace sample_size with your real sample numbers
 # --------------------------------------------------
 af_df <- tibble(
   population  = c("AFR", "AMR", "EAS", "EUR", "SAS"),
@@ -104,8 +103,6 @@ p_map <- ggplot() +
     legend.key.size = unit(0.35, "cm"),
     plot.margin = margin(2, 3, 2, 3)
   )
-
-# p_map
 
 ggsave(
   "world_map_AluY_LINC01572_pie_sampleSize_labels.pdf",
