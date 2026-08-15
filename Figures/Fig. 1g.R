@@ -49,7 +49,7 @@ cpg_growth_df <- bind_rows(cpg_nodes_growth, cpg_edges_growth) %>%
   )
 
 # ---------------------------
-# Nature-style colors
+# colors
 # ---------------------------
 freq_colors <- c(
   "High frequency (AF ≥ 90%)" = "#2166AC",
@@ -98,8 +98,6 @@ p <- ggplot(
     panel.grid = element_blank(),
     plot.margin = margin(5, 5, 5, 5)
   )
-
-# p
 
 ggsave(
   "CpG_saturation_HPRC2.pdf",
