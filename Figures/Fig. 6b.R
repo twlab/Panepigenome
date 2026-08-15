@@ -17,7 +17,6 @@ colnames(df) <- c("Variant", "Category", "Value")
 
 # ---------------------------
 # Clean data
-# If Value is percentage, convert to proportion
 # ---------------------------
 df <- df %>%
   mutate(
@@ -42,11 +41,6 @@ df <- df %>%
   ) %>%
   filter(!is.na(Category), !is.na(Variant), is.finite(Value))
 
-# wilcox.test(df$Value[df$Variant=="CpG gain/loss" & df$Category=='Benign'],mun=81.405/100)
-# wilcox.test(df$Value[df$Variant=="CpG gain/loss" & df$Category=='Pathogenic'],mun=81.405/100)
-# wilcox.test(df$Value[df$Variant=="CpG gain/loss" & df$Category=='Risk'],mun=81.405/100)
-# wilcox.test(df$Value[df$Variant=="CpG gain/loss" & df$Category=='Protective'],mun=81.405/100)
-# wilcox.test(df$Value[df$Variant=="CpG gain/loss" & df$Category=='Pharmacogenomic'],mun=81.405/100)
 median(df$Value[df$Variant=="CpG gain/loss" & df$Category=='Benign'])
 median(df$Value[df$Variant=="CpG gain/loss" & df$Category=='Pathogenic'])
 median(df$Value[df$Variant=="CpG gain/loss" & df$Category=='Risk'])
@@ -127,7 +121,7 @@ variant_colors <- c(
 )
 
 # ---------------------------
-# Nature-style median ± SD dot plot
+# median ± SD dot plot
 # ---------------------------
 pd <- position_dodge(width = 0.55)
 
@@ -178,11 +172,6 @@ p <- ggplot(
     legend.key.size = unit(0.4, "cm"),
     panel.grid = element_blank()
   )
-
-# p
-
-# Close all open graphics devices
-while (!is.null(dev.list())) dev.off()
 
 # Save PDF
 ggsave(
