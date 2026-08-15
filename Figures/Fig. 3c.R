@@ -11,7 +11,6 @@ pop <- read.table(
 )
 pc_scores<-read.table("PCA_scores_variant.txt",header=T)
 
-# example: pca_scores$sample should be replaced using pop mapping
 pc_scores$population <- ifelse(
   pc_scores$sample %in% pop$V1,
   pop$V2[match(pc_scores$sample, pop$V1)],
