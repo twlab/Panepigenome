@@ -1,7 +1,7 @@
 # Load required libraries
 library(ggplot2)
 library(dplyr)
-library(ggbeeswarm)  # for stacked/"tree-like" points
+library(ggbeeswarm)
 
 # Read data
 df <- read.table("merged_density.tsv", header = FALSE)
@@ -77,7 +77,7 @@ continent_abbr <- c("East Asia" = "EAS",
                     "Europe" = "EUR",
                     "America" = "AMR")
 
-# Nature-style bar plot
+# bar plot
 p <- ggplot(diffs, aes(x = Continent_Abbr, y = female_minus_male, fill = Continent_Abbr)) +
   geom_bar(stat = "identity", width = 0.6, show.legend = FALSE) +
   geom_text(aes(label = female_minus_male), vjust = -0.5, size = 4, fontface = "bold") +
