@@ -44,9 +44,9 @@ data <- data %>%
 wilcox.test(data$count[data$type=='SNV gain'], data$count[data$type=='SNV loss'],paired = T)
 shapiro.test(data$count[data$type=='SNV gain'])
 median(data$count[data$type=='SNV gain'])
-# 0.775
+
 median(data$count[data$type=='SNV loss'])
-# 0.775
+
 
 
 # ---------------------------
@@ -85,7 +85,7 @@ pop_colors <- c(
 )
 
 # ---------------------------
-# Nature-style median ± SD dot plot
+# median ± SD dot plot
 # ---------------------------
 pd <- position_dodge(width = 0.65)
 
