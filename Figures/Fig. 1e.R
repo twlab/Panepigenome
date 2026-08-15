@@ -1,16 +1,16 @@
 # Load required libraries
 library(ggplot2)
 library(dplyr)
-library(ggbeeswarm)  # for stacked/"tree-like" points
+library(ggbeeswarm) 
 
 # Read data
 df <- read.table("merged.tsv", header = FALSE)
-colnames(df) <- c("Sample", "CpG_Count", "Continent", "Sex")  # assume V4 is Sex
+colnames(df) <- c("Sample", "CpG_Count", "Continent", "Sex") 
 options(scipen = 999)
 mean(df$CpG_Count)
-# 31286564
+
 median(df$CpG_Count)
-# 31343583
+
 
 df$CpG_Count <- df$CpG_Count / 1e6  # convert to millions
 
@@ -40,7 +40,6 @@ medians <- df %>%
   group_by(Sex, Continent_Full) %>%
   summarise(median_CpG = median(CpG_Count), .groups="drop")
 
-
 diffs <- medians %>%
   pivot_wider(names_from = Sex, values_from = median_CpG) %>%  # make columns female and male
   mutate(female_minus_male = female - male,
@@ -51,14 +50,6 @@ diffs <- medians %>%
                                  "Europe" = "EUR",
                                  "America" = "AMR"))  
 
-# # A tibble: 5 × 4
-# Continent_Full    female      male female_minus_male
-# <fct>              <dbl>     <dbl>             <dbl>
-#   1 South Asia     32059114. 31771566.           287549 
-# 2 East Asia      32106165  31792402.           313764.
-# 3 Europe         32081344. 31703084.           378260 
-# 4 America        32248782  31722556.           526226.
-# 5 Africa         32252188  32001595            250593 
 
 # Custom colors
 continent_colors1 <- c(
