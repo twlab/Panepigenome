@@ -52,14 +52,6 @@ fold_df <- df %>%
   )
 
 fold_df
-# # A tibble: 5 × 5
-# Group `CpG gain` `CpG loss` fold_change_gain_vs_loss log2FC_gain_vs_loss
-# <fct>      <dbl>      <dbl>                    <dbl>               <dbl>
-#   1 DNA       0.0123    0.00813                     1.52               0.602
-# 2 LTR       0.0505    0.0376                      1.34               0.427
-# 3 LINE      0.0990    0.0564                      1.76               0.812
-# 4 SINE      0.248     0.123                       2.01               1.01 
-# 5 SVA       0.0666    0.0286                      2.33               1.22 
 
 a<-read.table("TE_ins.txt",header=T)
 b<-read.table('TE_del.txt',header=T)
@@ -113,8 +105,6 @@ p <- ggplot(plot_df, aes(x = Method, y = Fraction, fill = Group)) +
     legend.key.size = unit(0.4, "cm"),
     panel.grid = element_blank()
   )
-
-# p
 
 ggsave(
   "TE_feature_composition_SV_varCpGs.pdf",
