@@ -1,0 +1,129 @@
+library(tidyverse)
+
+theme_set(theme_classic(base_size = 14))
+
+# ---------------------------
+# Read data
+# ---------------------------
+df <- read.table(
+  "input",
+  header = TRUE,
+  sep = "\t",
+  stringsAsFactors = FALSE,
+  check.names = FALSE
+)
+
+# Expected columns:
+# Sample, Method, Group, median
+# median is assumed to be percentage methylation, so divide by 100
+
+df <- df %>%
+  mutate(
+    Meth = median / 100,
+    Sample = factor(Sample, levels = c("SNV", "Indel", "SV")),
+    Method = factor(Method, levels = c("CpG gain", "CpG loss")),
+    Group = factor(Group, levels = c("Gene", "Promoter", "CGI", "Shore", "Shelf"))
+  ) %>%
+  filter(
+    !is.na(Sample),
+    !is.na(Method),
+    !is.na(Group),
+    is.finite(Meth)
+  )
+
+# ---------------------------
+# Summarize and save table
+# ---------------------------
+summary_df <- df %>%
+  group_by(Method, Sample, Group) %>%
+  summarise(
+    n = n(),
+    mean_methylation = mean(Meth, na.rm = TRUE),
+    median_methylation = median(Meth, na.rm = TRUE),
+    sd_methylation = sd(Meth, na.rm = TRUE),
+    se_methylation = sd_methylation / sqrt(n),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    ymin = pmax(median_methylation - sd_methylation, 0),
+    ymax = pmin(median_methylation + sd_methylation, 1),
+    ymin = ifelse(is.na(ymin), median_methylation, ymin),
+    ymax = ifelse(is.na(ymax), median_methylation, ymax)
+  )
+
+write.table(
+  summary_df,
+  file = "CGI_methylation_summary.tsv",
+  sep = "\t",
+  quote = FALSE,
+  row.names = FALSE
+)
+
+# ---------------------------
+# colors
+# ---------------------------
+feature_colors <- c(
+  Gene     = "#4D4D4D",
+  Promoter = "#A6761D",
+  CGI      = "#66C2A5",
+  Shore    = "#B3B3B3",
+  Shelf    = "#8C564B"
+)
+
+# ---------------------------
+#  dot + errorbar plot
+# ---------------------------
+p <- ggplot(
+  summary_df,
+  aes(x = Sample, y = median_methylation, color = Group)
+) +
+  geom_hline(
+    yintercept = 0.803,
+    linetype = "dashed",
+    linewidth = 0.45,
+    color = "grey45"
+  ) +
+  geom_errorbar(
+    aes(ymin = ymin, ymax = ymax),
+    position = position_dodge(width = 0.65),
+    width = 0.18,
+    linewidth = 0.45
+  ) +
+  geom_point(
+    position = position_dodge(width = 0.65),
+    size = 2.4
+  ) +
+  facet_wrap(~Method, nrow = 1) +
+  scale_color_manual(values = feature_colors) +
+  scale_y_continuous(
+    limits = c(0, 1),
+    breaks = seq(0, 1, 0.25),
+    expand = c(0.02, 0.02)
+  ) +
+  labs(
+    x = NULL,
+    y = "Methylation level",
+    color = NULL
+  ) +
+  theme(
+    axis.text.x = element_text(size = 11, color = "black"),
+    axis.text.y = element_text(size = 11, color = "black"),
+    axis.title.y = element_text(size = 12, color = "black"),
+    axis.line = element_line(linewidth = 0.35, color = "black"),
+    axis.ticks = element_line(linewidth = 0.35, color = "black"),
+    strip.background = element_blank(),
+    strip.text = element_text(size = 12, face = "bold"),
+    legend.position = "right",
+    legend.text = element_text(size = 10),
+    legend.key.size = unit(0.45, "cm"),
+    panel.grid = element_blank()
+  )
+
+ggsave(
+  filename = "CGI_methylation.pdf",
+  plot = p,
+  width = 6.2,
+  height = 3.1,
+  device = "pdf",
+  useDingbats = FALSE
+)
