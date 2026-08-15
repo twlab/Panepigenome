@@ -36,15 +36,6 @@ con <- read.table(
 colnames(con) <- c("sample", "group")
 rownames(con)<-con$sample
 
-# # Population groups
-# pop <- read.table(
-#   "/scratch/zdong/Projects/PanEpiG/V1-9/Model_Ind/Refmeth/pop.log",
-#   stringsAsFactors = FALSE
-# )
-# pop <- pop[!pop$V2 %in% c("CH", "EUR"), 1:2]
-# colnames(pop) <- c("sample", "group")
-
-
 # Match samples
 common <- intersect(colnames(expr_mat), rownames(con))
 expr_mat <- expr_mat[, common, drop = FALSE]
@@ -71,10 +62,6 @@ t.test(a$y[a$sample %in% con$sample[con$group=="AFR"]],a$y[a$sample %in% con$sam
 t.test(a$y[a$sample %in% con$sample[con$group=="AFR"]],a$y[a$sample %in% con$sample[con$group=="SAS"]])
 
 t.test(a$y[a$sample %in% con$sample[con$group=="AFR"]],a$y[a$sample %in% con$sample[con$group!="AFR"]])   
-# ENST00000243346.10_ENSG00000123609.11 p: 0.000007   -0.2841    0.3941
-# flairiso38094-1_ENSG00000123609.11 p: 0.000000001
-# ENST00000428287.6_ENSG00000080345.18 p: 0.01
-# flairiso38108-2_ENSG00000080345.18 p: 0.01
 
 library(ggplot2)
 library(dplyr)
