@@ -5,7 +5,7 @@ library(dplyr)
 con2 <- con %>%
   mutate(value = 1) %>%
   tidyr::pivot_wider(
-    names_from  = V2,   # population column
+    names_from  = V2,
     values_from = value,
     values_fill = 0
   )
@@ -18,7 +18,7 @@ library(dplyr)
 pop2 <- pop %>%
   mutate(value = 1) %>%
   tidyr::pivot_wider(
-    names_from  = V2,   # population column
+    names_from  = V2,
     values_from = value,
     values_fill = 0
   )
@@ -74,7 +74,3 @@ for (i in seq_len(nrow(df))) {
 
 re<-data.frame(df[,1],r2,adj_r2,r2_pop,adj_r2_pop)
 write.table(re,file="r2_00.txt",sep="\t",row.names = F,quote = F)
-
-
-
-
