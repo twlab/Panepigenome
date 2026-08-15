@@ -46,7 +46,7 @@ write.table(
 )
 
 # ---------------------------
-# Nature-style colors
+# colors
 # ---------------------------
 type_colors <- c(
   "CGI gain" = "#B07AA1",
