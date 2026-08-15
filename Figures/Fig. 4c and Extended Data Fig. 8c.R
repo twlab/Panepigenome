@@ -71,8 +71,6 @@ p <- ggplot(plot_df, aes(x = n_groups, y = count_plot, color = signature),alpha 
     panel.grid = element_blank()
   )
 
-# p
-
 ggsave(
   "population_specific_signature_overlap.pdf",
   plot = p,
