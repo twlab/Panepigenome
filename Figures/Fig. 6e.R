@@ -106,7 +106,7 @@ total_labels <- data %>%
   )
 
 # ---------------------------
-# 3. Nature-style colours
+# 3. colours
 # ---------------------------
 category_colours <- c(
   "Integrated model only" = "#c35bca",
@@ -232,8 +232,6 @@ nature_plot <- ggplot(
     
     plot.margin = margin(4, 12, 4, 4)
   )
-
-# nature_plot
 
 # ---------------------------
 # 5. Save
