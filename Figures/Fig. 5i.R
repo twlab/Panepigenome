@@ -106,7 +106,7 @@ total_labels <- data %>%
   )
 
 # ---------------------------
-# 3. Nature-style colours
+# 3. colours
 # ---------------------------
 category_colours <- c(
   "Integrated model only" = "#c35bca",
@@ -240,7 +240,6 @@ nature_plot <- ggplot(
 # ---------------------------
 ggsave(
   filename = "CpG_overlap_geno_latent_1vsOthers.pdf",
-  plot = nature_plot,
   width = 5,
   height = 3.6,
   units = "in"
