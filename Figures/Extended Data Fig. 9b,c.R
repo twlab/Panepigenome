@@ -184,7 +184,7 @@ df <- df %>%
   )
 
 # ---------------------------
-# Nature-style heatmap
+# heatmap
 # ---------------------------
 p <- ggplot(df, aes(x = pair, y = feature, fill = log2OR_capped)) +
   geom_tile(
@@ -232,8 +232,6 @@ p <- ggplot(df, aes(x = pair, y = feature, fill = log2OR_capped)) +
     panel.border = element_rect(color = "black", fill = NA, linewidth = 1),
     panel.grid = element_blank()
   )
-
-# p
 
 ggsave(
   "population_specific_varCpG_feature_enrichment_heatmap_p_model1_merged_features.pdf",
