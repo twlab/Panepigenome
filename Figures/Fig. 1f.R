@@ -1,20 +1,18 @@
 # Load required libraries
 library(ggplot2)
 library(dplyr)
-library(ggbeeswarm)  # for stacked/"tree-like" points
+library(ggbeeswarm) 
 
 # Read data
 df <- read.table("merged.tsv", header = FALSE)
-colnames(df) <- c("Sample", "Count","CpG_Count", "Continent", "Sex")  # assume V4 is Sex
+colnames(df) <- c("Sample", "Count","CpG_Count", "Continent", "Sex")
 options(scipen = 999)
 shapiro.test(df$CpG_Count)
-# p-value = 0.000000772
+
 median(df$CpG_Count)
-# 80.3
 
 summary(df$CpG_Count)
-# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-# 63.90   75.58   80.30   79.28   82.83   89.50 
+
 
 # Map short codes to full continent names
 continent_full <- c("EAS" = "East Asia",
@@ -48,15 +46,6 @@ diffs <- medians %>%
                                  "Europe" = "EUR",
                                  "America" = "AMR"))  
 
-diffs
-# # A tibble: 5 × 5
-# Continent_Full female  male female_minus_male Continent_Abbr
-# <fct>           <dbl> <dbl>             <dbl> <fct>         
-#   1 Europe           79.0  78.2             0.800 EUR           
-# 2 Africa           79.7  78.4             1.30  AFR           
-# 3 East Asia        78.2  79.7            -1.50  EAS           
-# 4 South Asia       82.1  80.8             1.30  SAS           
-# 5 America          81.2  81.6            -0.350 AMR 
 
 # Custom colors
 continent_colors1 <- c(
@@ -87,7 +76,7 @@ library(ggplot2)
 library(dplyr)
 library(ggbeeswarm)
 
-# --- Nature-style Violin + Boxplot + Beeswarm ---
+# --- Violin + Boxplot + Beeswarm ---
 p <- ggplot(df, aes(x = Continent_Full, y = CpG_Count)) +
   
   # Transparent violin, thin black border (Nature style)
@@ -108,7 +97,7 @@ p <- ggplot(df, aes(x = Continent_Full, y = CpG_Count)) +
     color = "black"
   ) +
   
-  # Beeswarm (dots) with continent colors → much nicer
+  # Beeswarm (dots) with continent colors
   geom_quasirandom(
     aes(color = Continent_Full),
     size = 1.7,
@@ -150,7 +139,7 @@ p <- ggplot(df, aes(x = Continent_Full, y = CpG_Count)) +
   # Facet by sex
   facet_wrap(~ Sex) +
   coord_cartesian(ylim = c(50, 100)) +  # y-axis ends at 100
-  # Beautiful Nature theme
+  # theme
   theme_classic(base_size = 12) +
   theme(
     axis.line = element_line(color = "black", linewidth = 0.4),
