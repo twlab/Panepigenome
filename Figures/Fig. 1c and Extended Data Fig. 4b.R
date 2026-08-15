@@ -1,33 +1,32 @@
 # Load required libraries
 library(ggplot2)
 library(dplyr)
-library(ggbeeswarm)  # for stacked/"tree-like" points
+library(ggbeeswarm)
 
 # Read data
 df <- read.table("merged.tsv", header = FALSE)
-colnames(df) <- c("Sample", "CpG_Count", "Continent", "Sex")  # assume V4 is Sex
+colnames(df) <- c("Sample", "CpG_Count", "Continent", "Sex") 
 options(scipen = 999)
 
 median(df$CpG_Count[df$Continent=='AMR' & df$Sex=='male'])
-# [1] 31722556
+
 median(df$CpG_Count[df$Continent=='AMR' & df$Sex=='female'])
-# [1] 32248782
+
 
 median(df$CpG_Count[df$Continent=='EUR' & df$Sex=='male'])
-# [1] 31703084
+
 median(df$CpG_Count[df$Continent=='AFR' & df$Sex=='female'])
-# [1] 32252188
+
 median(df$CpG_Count[df$Continent=='AMR' & df$Sex=='female'])-median(df$CpG_Count[df$Continent=='AMR' & df$Sex=='male'])
-# [1] 526226.5
+
 
 # Optional: exclude specific samples
 exclude_samples <- c("HG00272_hap1_hprc_r2_v1.0.1.CpG_sites.bed",
                      "HG00272_hap2_hprc_r2_v1.0.1.CpG_sites.bed")
 df <- df[!df$Sample %in% exclude_samples, ]
 mean(df$CpG_Count)
-# 32002044
+
 median(df$CpG_Count)
-# 32025075
 
 df$CpG_Count <- df$CpG_Count / 1e6  # convert to millions
 
@@ -65,14 +64,6 @@ diffs <- medians %>%
                                  "Europe" = "EUR",
                                  "America" = "AMR"))  
 
-# # A tibble: 5 × 4
-# Continent_Full    female      male female_minus_male
-# <fct>              <dbl>     <dbl>             <dbl>
-#   1 South Asia     32059114. 31771566.           287549 
-# 2 East Asia      32106165  31792402.           313764.
-# 3 Europe         32081344. 31703084.           378260 
-# 4 America        32248782  31722556.           526226.
-# 5 Africa         32252188  32001595            250593 
 
 # Custom colors
 continent_colors1 <- c(
@@ -99,7 +90,7 @@ continent_abbr <- c("East Asia" = "EAS",
                     "Europe" = "EUR",
                     "America" = "AMR")
 
-# Nature-style bar plot
+# bar plot
 p <- ggplot(diffs, aes(x = Continent_Abbr, y = female_minus_male, fill = Continent_Abbr)) +
   geom_bar(stat = "identity", width = 0.6, show.legend = FALSE) +
   geom_text(aes(label = female_minus_male), vjust = -0.5, size = 4, fontface = "bold") +
