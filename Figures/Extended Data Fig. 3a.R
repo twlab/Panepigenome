@@ -19,9 +19,9 @@ data_long <- data %>%
   mutate(Type = ifelse(Type == "freq", "Ref", "Nonref"))
 
 median(data_long$Methylation[data_long$Type=='Nonref'])
-# [1] 82.55
+
 median(data_long$Methylation[data_long$Type=='Ref'])
-# [1] 79.75
+
 
 library(ggplot2)
 library(dplyr)
@@ -121,7 +121,7 @@ write.table(
 # 2. Sample points for visualization
 # ==================================================
 # Density and box plots use all observations.
-# At most 300 points per group are displayed.
+
 
 set.seed(123)
 
