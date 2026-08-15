@@ -3,7 +3,7 @@ library(ggplot2)
 library(scales)
 
 df <- fread("re_con_removeheader_MAF5.txt")
-# df$var_residuals<-df$var_residuals/10000
+
 pop_colors <- c(
   AFR = "#0072B2",
   AMR = "#D55E00",
