@@ -120,4 +120,4 @@ This repository is released under the **MIT License**. See the `LICENSE` file fo
 For questions regarding the code or analyses, please contact:
 
 **Zheng Dong**
-Email: [dzheng.th@gmail.com](mailto:dzheng.th@gmail.com)
+Email: [zdong@wustl.edu](mailto:zdong@wustl.edu)
