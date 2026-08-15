@@ -24,13 +24,13 @@ dat <- bind_rows(A, B)
 dat$value<-dat$value/440
 dat<-dat[dat$value<=1,]
 mean(dat$value)
-# [1] 0.04087214
+
 mean(dat$value[dat$type=="SNV"])
-# [1] 0.051506
+
 mean(dat$value[dat$type=="IINS" | dat$type=="IDEL"])
-# [1] 0.05171943
+
 mean(dat$value[dat$type=="INS" | dat$type=="DEL"])
-# [1] 0.02094121
+
 
 # -------------------------
 # 2. class
@@ -56,10 +56,10 @@ med <- dat %>%
 
 write.table(
   med,
-  file = "med_values.txt",  # 输出文件名
-  sep = "\t",               # 使用 tab 分隔
-  row.names = FALSE,        # 不输出行号
-  quote = FALSE             # 不加引号
+  file = "med_values.txt",  
+  sep = "\t",              
+  row.names = FALSE,        
+  quote = FALSE             
 )
 
 
@@ -231,7 +231,7 @@ plot_df <- dat %>%
   ungroup()
 
 # -----------------------------
-# 2. Colors (clean, publication style)
+# 2. Colors
 # -----------------------------
 pie_cols <- c(
   "<0.1"    = "#FDAE61",   # blue
