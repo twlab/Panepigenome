@@ -42,12 +42,12 @@ colnames(pop) <- c("sample", "group")
 expr_mat <- as.matrix(df[, 2:ncol(df)])
 
 # Match sample names
-# stopifnot(ncol(expr_mat) == nrow(con))
-# colnames(expr_mat) <- con$sample
+stopifnot(ncol(expr_mat) == nrow(con))
+colnames(expr_mat) <- con$sample
 expr_mat<-expr_mat[,con$sample]
 
 # -------------------------------
-# Step 3: Core function (CpG-wise, memory efficient)
+# Step 3: Function
 # -------------------------------
 compute_group_variance <- function(expr_mat, gene_id, meta, remove_samples = NULL,
                                    eps = 1e-6) {
@@ -108,7 +108,7 @@ write.table(
   row.names = FALSE
 )
 
-# Population (remove HG002 & HG005)
+# Population
 pop_var <- compute_group_variance(
   expr_mat = expr_mat,
   gene_id  = gene_id,
