@@ -94,7 +94,7 @@ pca_var <- data.table(
 fwrite(pca_var, "PCA_variance_explained_variant.txt", sep = "\t")
 
 # ===========================
-# 8️⃣ PCA plot (Nature style)
+# 8️⃣ PCA plot
 # ===========================
 pc1_var <- round(100 * pca_var[PC == "PC1", variance_explained], 1)
 pc2_var <- round(100 * pca_var[PC == "PC2", variance_explained], 1)
@@ -129,7 +129,7 @@ p <- ggplot(
   )
 
 ggsave(
-  "PCA_PC1_PC2_variant_NatureStyle.pdf",
+  "PCA_PC1_PC2_variant.pdf",
   plot = p,
   width = 5.5,
   height = 4.5,
